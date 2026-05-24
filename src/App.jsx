@@ -1,7 +1,12 @@
-export function App() {
+import AppRouter from './router/AppRouter'
+import Layout from './components/layout/Layout'
+
+function App() {
   return (
-    <div className="App">
-      <button className="btn">Botón</button>
-    </div>
+    <Layout>
+      <AppRouter />
+    </Layout>
   )
 }
+
+export default App
