@@ -5,7 +5,7 @@ import ServiceCard from '../components/ui/ServiceCard'
 function Home() {
   return (
     <>
-      <section className="hero">
+    <section className="hero">
         <div className="hero-content">
           <span className="eyebrow">Barbería premium</span>
           <h1>Tu próximo corte empieza aquí</h1>
@@ -32,7 +32,7 @@ function Home() {
             <ServiceCard key={service.id} service={service} />
           ))}
         </div>
-      </section>
+    </section>
     </>
   )
 }

@@ -55,6 +55,8 @@ main {
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, #111 0%, #1c1c1c 100%);
+  background-image: url('../assets/imageHome.png'), linear-gradient(135deg, #111 0%, #1c1c1c 100%);
+  background-size: cover;
 }
 
 .hero-content {
@@ -214,4 +216,12 @@ main {
   .section {
     padding: 4rem 6%;
   }
+}
+
+.barber-image {
+  width: 80%;
+  height: 80%;
+  margin-left: 10%;
+  margin-top: 1rem;
+  border-radius: 0.8rem;
 }
