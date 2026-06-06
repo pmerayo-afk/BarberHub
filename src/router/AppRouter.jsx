@@ -5,6 +5,7 @@ import Team from '../pages/Team'
 import Booking from '../pages/Booking'
 import Contact from '../pages/Contact'
 import Admin from '../pages/Admin'
+import Login from '../pages/Login'
 
 function AppRouter() {
   return (
@@ -15,6 +16,7 @@ function AppRouter() {
       <Route path="/reservar" element={<Booking />} />
       <Route path="/contacto" element={<Contact />} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   )
 }
