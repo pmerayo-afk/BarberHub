@@ -11,7 +11,7 @@ function Home() {
         <div className="hero-content">
           <span className="eyebrow">Barbería premium</span>
 
-          <h2>Cortes precisos, barba cuidada y estilo a tu medida</h2>
+          <h1>Cortes precisos, barba cuidada y estilo a tu medida</h1>
 
           <p>
             Reserva tu cita en pocos pasos, elige tu barbero favorito y disfruta

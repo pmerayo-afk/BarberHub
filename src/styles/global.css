@@ -315,7 +315,7 @@ main {
   vertical-align: bottom;
   margin-right: 0.5rem;
 }
-
+/*
 .btn {
   display: inline-block;
   text-align: center;
@@ -323,7 +323,7 @@ main {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
-}
+}*/
 
 .map-iframe {
   width: 100%;
