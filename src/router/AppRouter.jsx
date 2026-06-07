@@ -6,6 +6,7 @@ import Booking from '../pages/Booking'
 import Contact from '../pages/Contact'
 import Admin from '../pages/Admin'
 import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 function AppRouter() {
   return (
@@ -17,6 +18,7 @@ function AppRouter() {
       <Route path="/contacto" element={<Contact />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/registro" element={<Register />} />
     </Routes>
   )
 }

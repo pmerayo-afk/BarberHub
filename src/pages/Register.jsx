@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
-function Login() {
-  const { login, loginWithGoogle } = useAuth()
+function Register() {
+  const { register, loginWithGoogle } = useAuth()
   const navigate = useNavigate()
 
-  const [form, setForm] = useState({ email: '', password: '' })
+  const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' })
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -15,10 +15,20 @@ function Login() {
   const handleSubmit = async e => {
     e.preventDefault()
     setError('')
+
+    if (form.password.length < 6) {
+      setError('La contraseña debe tener al menos 6 caracteres.')
+      return
+    }
+    if (form.password !== form.confirm) {
+      setError('Las contraseñas no coinciden.')
+      return
+    }
+
     setLoading(true)
     try {
-      await login(form)
-      navigate('/')
+      await register({ name: form.name, email: form.email, password: form.password })
+      navigate('/')          // Auto-login → redirect home
     } catch (err) {
       setError(err.message)
     } finally {
@@ -36,18 +46,34 @@ function Login() {
     }
   }
 
+  // Password strength indicator
+  const strength = getStrength(form.password)
+
   return (
     <div className="auth-page">
       <div className="auth-card">
         <div className="auth-header">
           <span className="logo">BarberHub</span>
-          <h1>Bienvenido de nuevo</h1>
-          <p>Inicia sesión para gestionar tus reservas</p>
+          <h1>Crea tu cuenta</h1>
+          <p>Únete y reserva cita en segundos</p>
         </div>
 
         {error && <div className="auth-error">{error}</div>}
 
         <form onSubmit={handleSubmit} className="auth-form">
+          <label>
+            Nombre completo
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Juan García"
+              required
+              autoComplete="name"
+            />
+          </label>
+
           <label>
             Correo electrónico
             <input
@@ -68,14 +94,35 @@ function Login() {
               name="password"
               value={form.password}
               onChange={handleChange}
-              placeholder="••••••••"
+              placeholder="Mínimo 6 caracteres"
               required
-              autoComplete="current-password"
+              autoComplete="new-password"
+            />
+            {form.password.length > 0 && (
+              <div className="strength-bar">
+                <div className={`strength-fill strength-${strength.level}`} />
+                <span className={`strength-label strength-label-${strength.level}`}>
+                  {strength.label}
+                </span>
+              </div>
+            )}
+          </label>
+
+          <label>
+            Confirmar contraseña
+            <input
+              type="password"
+              name="confirm"
+              value={form.confirm}
+              onChange={handleChange}
+              placeholder="Repite tu contraseña"
+              required
+              autoComplete="new-password"
             />
           </label>
 
           <button type="submit" className="btn btn-primary auth-btn" disabled={loading}>
-            {loading ? 'Iniciando sesión…' : 'Iniciar sesión'}
+            {loading ? 'Creando cuenta…' : 'Crear cuenta'}
           </button>
         </form>
 
@@ -85,18 +132,30 @@ function Login() {
 
         <button className="btn-google" onClick={handleGoogle} type="button">
           <GoogleIcon />
-          Continuar con Google
+          Registrarse con Google
         </button>
 
         <p className="auth-footer-text">
-          ¿No tienes cuenta?{' '}
-          <Link to="/registro" className="auth-link">
-            Regístrate gratis
+          ¿Ya tienes cuenta?{' '}
+          <Link to="/login" className="auth-link">
+            Inicia sesión
           </Link>
         </p>
       </div>
     </div>
   )
+}
+
+function getStrength(password) {
+  if (!password) return { level: 'none', label: '' }
+  if (password.length < 6) return { level: 'weak', label: 'Débil' }
+  const hasUpper = /[A-Z]/.test(password)
+  const hasNumber = /\d/.test(password)
+  const hasSpecial = /[^A-Za-z0-9]/.test(password)
+  const score = [hasUpper, hasNumber, hasSpecial].filter(Boolean).length
+  if (score === 3 && password.length >= 10) return { level: 'strong', label: 'Fuerte' }
+  if (score >= 1 && password.length >= 6) return { level: 'medium', label: 'Media' }
+  return { level: 'weak', label: 'Débil' }
 }
 
 function GoogleIcon() {
@@ -110,4 +169,4 @@ function GoogleIcon() {
   )
 }
 
-export default Login
+export default Register

@@ -229,3 +229,229 @@ main {
   margin-top: 1rem;
   border-radius: 0.8rem;
 }
+/* ─── Auth pages ─────────────────────────────────────── */
+
+.auth-page {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  background: linear-gradient(135deg, #0b0b0b 0%, #1a1a1a 100%);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #161616;
+  border: 1px solid #2a2a2a;
+  border-radius: 1.4rem;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.auth-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.auth-header .logo {
+  font-size: 1.8rem;
+}
+
+.auth-header h1 {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 0.4rem;
+}
+
+.auth-header p {
+  color: #888;
+  font-size: 0.95rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.auth-form input {
+  padding: 0.85rem 1rem;
+  border-radius: 0.8rem;
+  border: 1px solid #333;
+  background-color: #1f1f1f;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: #d4a056;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  border-radius: 0.8rem;
+  margin-top: 0.3rem;
+}
+
+.auth-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-error {
+  background-color: #2d1515;
+  border: 1px solid #6b2020;
+  color: #f88;
+  padding: 0.75rem 1rem;
+  border-radius: 0.7rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background-color: #2a2a2a;
+}
+
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1rem;
+  background-color: #1f1f1f;
+  border: 1px solid #333;
+  border-radius: 0.8rem;
+  color: #eee;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-google:hover {
+  background-color: #2a2a2a;
+  border-color: #555;
+}
+
+.auth-footer-text {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.auth-link {
+  color: #d4a056;
+  font-weight: 600;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Password strength ──────────────────────────────── */
+
+.strength-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.strength-fill {
+  height: 4px;
+  border-radius: 99px;
+  flex: 1;
+  transition: width 0.3s, background-color 0.3s;
+}
+
+.strength-weak   { background-color: #e05555; width: 33%; }
+.strength-medium { background-color: #e0a855; width: 66%; }
+.strength-strong { background-color: #55c87a; width: 100%; }
+
+.strength-label       { font-size: 0.75rem; }
+.strength-label-weak   { color: #e05555; }
+.strength-label-medium { color: #e0a855; }
+.strength-label-strong { color: #55c87a; }
+
+/* ─── Navbar user info ───────────────────────────────── */
+
+.navbar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.navbar-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #d4a056;
+  object-fit: cover;
+}
+
+.navbar-username {
+  color: #d4a056;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.btn-logout {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-logout:hover {
+  color: #fff;
+  border-color: #888;
+}
+
+.navbar-auth-btn {
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .navbar-username {
+    display: none;
+  }
+}
