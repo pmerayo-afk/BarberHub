@@ -6,6 +6,7 @@ function ServiceCard({ service }) {
 
       <div className="service-card-footer">
         <span>{service.duration} min</span>
+        &nbsp;|&nbsp;
         <strong>{service.price}€</strong>
       </div>
     </article>
